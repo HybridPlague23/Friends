@@ -1,0 +1,27 @@
+main: me.HybridPlague.Friends.Main
+name: Friends
+author: HybridPlague
+version: 2.0
+description: A simple plugin to add a friend system to your server!
+prefix: Friends
+depend: [PlaceholderAPI, Vault]
+api-version: 1.13
+
+commands:
+  Friends:
+    aliases: [friend, f]
+    description: All things friend related
+    permission: friends.basic
+
+permissions:
+  friends.*:
+    description: Gives access to all Friends commands.
+    children:
+      friends.basic: true
+      friends.reload: true
+  friends.basic:
+    description: Gives access to the basic Friends commands.
+    default: true
+  friends.reload:
+    description: Gives access to reload the configuration file.
+    default: false

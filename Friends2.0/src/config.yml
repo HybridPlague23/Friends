@@ -1,0 +1,327 @@
+# Basic prefix sent before messages in chat. Set to "" to disable.
+Prefix: "&7[&bFriends&7]&r "
+
+# Date format used when someone is blocked or added.
+# Format uses java's SimpleDatFormat, which you can find information about here:
+# https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+Date-Format: "EEE, MMM dd, yyyy"
+Request-Timer: 30 # <--- Seconds
+
+Help-Messages-Header: "&8---- &b&lFriends &8----"
+Help-Messages:
+- "&7» &c/f accept[all] [<player>] &e- Accept someone's incoming friend request, or accept all incoming friend requests."
+- "&7» &c/f add <player> &e- Send someone a friend request."
+- "&7» &c/f block <player> &e- Block someone from sending you future friend requests."
+- "&7» &c/f blocklist &e- Open a GUI menu displaying everyone you have blocked."
+- "&7» &c/f deny[all] &e- Deny someone's incoming friend request, or deny all incoming friend requests."
+- "&7» &c/f help &e- Display this help screen."
+- "&7» &c/f list &e- Open a GUI menu displaying all of your friends."
+- "&7» &c/f remove[all] [<player>] &e- Remove someone from your friends list, or remove everyone from your friends list."
+- "&7» &c/f togglefind &e- Toggle whether or not friends can find your location."
+- "&7» &c/f togglerequests &e- Toggle whether or not you are accepting friend requests."
+- "&7» &c/f unblock[all] &e- Unblock someone, or unblock everyone you have blocked."
+Help-Messages-Reload: "&7» &4/f reload &e- Reloads the config file." # Only sent to those with permission 'friends.reload'
+Help-Messages-Footer: "&8-----------------"
+
+Error-Messages:
+  General: # General messages sent on command usage error
+    No-Arguments: "&cSyntax error: &e/f %command% <player>"
+    Self-Target: "&cYou cannot use this command on yourself!"
+    Unknown-Player: "&cPlayer not found."
+  
+  Accept:
+    No-Request-From: "&cYou do not have an incoming friend request from &e%p%&c!"
+    
+  AcceptAll:
+    No-Requests: "&cYou do not have any incoming friend requests."
+  
+  Add:
+    Already-Sent: "&cYou already have an outgoing request to &e%p%&c!"
+    Already-Friends: "&cYou are already friends with &e%p%&c!"
+    Not-Accepting: "&e%p% &cis not accepting friend requests."
+    Player-Blocked: "&e%p% &chas you blocked."
+    Target-Blocked: "&e%p% &cis currently blocked."
+  
+  Deny:
+    No-Request-From: "&cYou do not have an incoming friend request from &e%p%&c!"
+  
+  DenyAll:
+    No-Requests: "&cYou do not have any incoming friend requests."
+  
+  List:
+    No-Blocks: "&cYou are not blocking anyone." # Sent from /f blocklist
+    No-Friends: "&cYou have no friends...Make some using &e/f add <player>&c!" # Sent from /f list
+  
+  Find:
+    Toggled-Off: "&e%p% &ccannot be located."
+    Not-Friends: "&cYou are not currently friends with &e%p%&c."
+  
+  Remove:
+    Not-Friends: "&cYou are not currently friends with &e%p%&c."
+  
+  RemoveAll:
+    No-Friends: "&cYou do not have any friends to remove."
+    
+  Unblock:
+    Not-Blocked: "&cYou do not have &e%p% &cblocked."
+    
+  UnblockAll:
+    No-Blocks: "&cYou are not blocking anyone."
+
+Messages:
+  Join: "&e%p% &ajoined"
+  Quit: "&e%p% &cleft"
+
+  Accept:
+    # Player-Accepted is sent to whoever sent the request
+    Player-Accepted: "&e%p% &ahas accepted your friend request!"
+    # Target-Accepted is sent to whoever received the request
+    Target-Accepted: "&aYou have accepted &e%p%&a's friend request."
+    
+  AcceptAll:
+    Accepted: "&aYou have accepted all incoming friend requests!"
+    
+  Add:
+    Expired-Player: "&7Your friend request to &e%p% &7has expired."
+    Expired-Target: "&e%p%&7's friend request has expired."
+    Receive: "&7You have received a friend request from &e%p%&7. Use &e/f accept %p% &7or &e/f deny %p%&7."
+    Sent: "&7You have sent &e%p% &7a friend request."
+  
+  Block:
+    Blocked: "&7You have blocked &e%p% &7from your friends list."
+  
+  Deny:
+    Player-Denied: "&e%p% &chas denied your friend request."
+    Target-Denied: "&cYou have denied &e%p%&c's friend request."
+  
+  DenyAll:
+    Denied: "&7You have denied all incoming friend requests."
+    
+  Find: "&e%p% &7is in &e%world% &7at &eX:%x% Y:%y% Z:%z%"
+    
+  Remove:
+    Removed: "&7You have removed &e%p% &7from your friends list."
+    
+  RemoveAll:
+    Removed: "&7You have removed all of your friends."
+    
+  Toggle:
+    Find-Off: "&7Friends can no longer &e/f find &7you."
+    Find-On: "&7Friends can now use &e/f find &7to find you."
+    
+    Requests-Off: "&7Friend requests toggled &4OFF&7."
+    Requests-On: "&7Friend requests toggled &aON&7."
+  
+  Unblock:
+    Unblocked: "&e%p% &7is no longer blocked."
+    
+  UnblockAll:
+    Unblocked: "&7You have unblocked everyone."
+    
+    
+################################################
+#
+#       Edit all GUIs at your will here
+#
+#     Variables that are uses here include:
+#
+#         %p% - Returns a player's username;
+#         %date% - Returns the date in which a player was added as a friend, or block from the friend list;
+#         %status% - Returns the ONLINE/OFFLINE status of a player in the FRIEND list;
+#         %page% - Returns the GUI page in which the player is currently viewing;
+#         %count% - Returns the total number of friends or block players;
+#         %balance% - Returns a player's balance.
+#
+#
+#
+# GUI-Editor:
+#   General: <--- Repetive pieces of the GUIs, such as close, next, and back
+#
+#   Friend-List: <--- All things friend list GUI related
+#     Header: <--- Title/Header of the friend list GUI
+#     Player-Heads: <--- Modify the name and lore of each player list that appears in the GUI
+#     Filler: <--- Fills in all empty slots inside of the GUI if enabled
+#     Hotbar: <--- Bottom GUI row configuration
+#
+#   Friend-Options: <--- GUI menu that opens when a player head is clicked inside of the friend list
+#     Header: <--- Title/Header of the friend options GUI
+#     Remove: <--- Runs '/f remove <player>'
+#     Block: <--- Runs '/f block <player'
+#     Balance: <--- Runs '/balance <player>'
+#     Pay: <--- Sends a clickable message in chat; when clicked, puts '/pay <player> <amount>' in the player's textbar
+#     PlayerInfo: <--- Runs '/playerinfo <player>'
+#     Seen: <--- Runs '/seen <player>'
+#     Mail: <--- Sends a clickable message in chat; when clicked, puts '/mail send <player> <message>' in the player's textbar
+#
+#   Blocked-List: <--- All things blocked list GUI related
+#     Header: <--- Title/Header of the blocked list GUI
+#     Player-Heads: <--- Modify the name and lore of each player list that appears in the GUI
+#     Filler: <--- Fills in all empty slots inside of the GUI if enabled
+#     Hotbar: <--- Bottom GUI row configuration
+#
+#   Blocked-Options: <--- GUI menu that opens when a player head is clicked inside of the blocked list
+#     Header: <--- Title/Header of the blocked options GUI
+#     Unblock: <--- Runs '/unblock <player>'
+#     Unblock-Add: <--- Runs '/unblock <player>' AND '/f add <player>'
+#
+################################################
+GUI-Editor:
+  General:
+    Close:
+      name: "&4Close"
+      item: BARRIER
+    Next:
+      name: "&4Next"
+      item: ARROW
+    Back:
+      name: "&4Back"
+      item: ARROW
+      
+  Friend-List:
+    Header: "&bFriend Count: &c%count% &8| &bPage: &c%page%"
+    
+    Player-Heads:
+      name: "&e%p%"
+      lore:
+      - ""
+      - "&aDate Added: &7%date%"
+      - "%status%"
+    
+    Filler:
+      enabled: true # Should the friends list GUI contain filler items
+      item: BLACK_STAINED_GLASS_PANE # Use item names only (not IDs), and use UNDERSCOREs instead of spaced; is not case sensitive.
+      
+    Hotbar:
+      Filler:
+        item: RED_STAINED_GLASS_PANE
+      ToggleReq: # /f togglereq
+        name: "&4Toggle Friend Requests"
+        lore:
+        - ""
+        - "&7&oClick to toggle your friend requests on or off."
+        on-type: EMERALD_BLOCK
+        off-type: REDSTONE_BLOCK
+      ToggleFind: # /f togglefind
+        name: "&4Toggle Find Location"
+        lore:
+        - ""
+        - "&7&oClick to toggle your location on or off."
+        on-type: EMERALD_BLOCK
+        off-type: REDSTONE_BLOCK
+  
+  Friend-Options:
+    Header: "&bFriend Options » &b&l%p%"
+    
+    Remove:
+      name: "&eRemove"
+      item: RED_WOOL
+      lore:
+      - ""
+      - "&7Remove %p% from your friends list."
+    Block:
+      name: "&eBlock"
+      item: BARRIER
+      lore:
+      - ""
+      - "&7Block %p%."
+    Balance:
+      name: "&eBalance"
+      item: EMERALD
+      lore:
+      - ""
+      - "&aBalance: &f%balance%"
+    Pay:
+      name: "&ePay"
+      item: PAPER
+      chat-message:
+      - ""
+      - "    &9Type in chat the amount you wish to send to &e%p%&9."
+      - "    &9To cancel, type &f&lcancel &9or &f&lstop"
+      - ""
+      lore:
+      - ""
+      - "&7Pay %p%."
+    PlayerInfo:
+      name: "&ePlayerInfo"
+      item: BOOK
+      lore:
+      - ""
+      - "&7View %p%'s PlayerInfo."
+    Seen:
+      name: "&eSeen"
+      item: REDSTONE_TORCH
+      lore:
+      - ""
+      - "&7View %p%'s /seen."
+    Mail:
+      name: "&eMail"
+      item: WRITABLE_BOOK
+      chat-message:
+      - ""
+      - "    &9Type in chat the mail letter you wish to send to &e%p%&9."
+      - "    &9To cancel, type &f&lcancel &9or &f&lstop"
+      - ""
+      lore:
+      - ""
+      - "&7Send a mail letter to %p%."
+    
+    Filler:
+      enabled: true
+      item: BLACK_STAINED_GLASS_PANE
+      
+    Hotbar:
+      Filler:
+        item: RED_STAINED_GLASS_PANE
+    
+  
+  Blocked-List:
+    Header: "&bBlocked Count: &c%count% &8| &bPage: &c%page%"
+    
+    Player-Heads:
+      name: "&e%p%"
+      lore:
+      - ""
+      - "&aDate Blocked: &7%date%"
+    
+    Filler:
+      enabled: true
+      item: BLACK_STAINED_GLASS_PANE
+      
+    Hotbar:
+      Filler:
+        item: RED_STAINED_GLASS_PANE
+  
+  Blocked-Options:
+    Header: "&bBlocked Options » &b&l%p%"
+    
+    Unblock:
+      name: "&eUnblock"
+      item: LIGHT_GRAY_WOOL
+      lore:
+      - ""
+      - "&7Unblock %p%."
+      
+    Unblock-Add:
+      name: "&eUnblock and Add"
+      item: GREEN_WOOL
+      lore:
+      - ""
+      - "&7Unblock and send a friend request to %p%."
+    
+    Filler:
+      enabled: true
+      item: BLACK_STAINED_GLASS_PANE
+      
+    Hotbar:
+      Filler:
+        item: RED_STAINED_GLASS_PANE
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
